@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<div class="col-xs-3">
+    <div  class="text-center" >
+        <img src="~/images/logo2.png" class="col-xs-12"/>
+        <h2 class="text-center">Graphic creator</h2>
+    </div>
+
+    <div class="controls form-group">
+        <div class="form-group">
+            <label>X start:</label>
+            <input class="form-control" name="xStart" type="number" value="-40" />
+        </div>
+        <div class="form-group">
+            <label>X end:</label>
+            <input class="form-control" name="xEnd" type="number" value="40" />
+        </div>
+        <div class="form-group">
+            <label>Y start:</label>
+            <input class="form-control" name="yStart" type="number" value="-80" />
+        </div>
+        <div class="form-group">
+            <label>Y end:</label>
+            <input class="form-control" name="yEnd" type="number" value="80" />
+        </div>
+        <div class="form-group">
+            <label>Step</label>
+            <input class="form-control" name="step" type="number" value="3" />
+        </div>
+        <div class="form-group">
+            <button id="do-it-btn" class="btn btn-primary">Do it</button>
+        </div>
+
+        <div class="form-group">
+            <h4 class="surfaceS"></h4>
+        </div>
+    </div>
+</div>
+
+
+<div id="plot" class="col-xs-8"></div>
+
+ <script>
+        window.onload = () => {
+            let btn = document.getElementById("do-it-btn");
+            let s = document.getElementsByClassName("surfaceS")[0];
+            Plotly.newPlot("plot", [{ type: 'mesh3d',x: [0], y:[0], z:[0]}], {}, { showSendToCloud: true });
+
+            btn.addEventListener("click", _ => {
+
+                let xStart = document.querySelector('input[name="xStart"]').value;
+                let xEnd = document.querySelector('input[name="xEnd"]').value;
+                let yStart = document.querySelector('input[name="yStart"]').value;
+                let yEnd = document.querySelector('input[name="yEnd"]').value;
+                let step = document.querySelector('input[name="step"]').value;
+
+                new Promise((resolve, reject) => {
+
+                    $.ajax({
+                        url: '@Url.Action("GetXYZ", "Home")',
+
+                        data: {
+                            xStart: xStart,
+                            xEnd: xEnd,
+                            yStart: yStart,
+                            yEnd: yEnd,
+                            step: step
+                        },
+                        success: response => {
+
+                            if (response.status) {                               
+                            
+                                xArr = response.result.map(point => point.x);
+                                yArr = response.result.map(point => point.y);
+                                zArr = response.result.map(point => point.z);
+
+                                console.dir(response.result);
+                                console.dir(xArr);
+
+                                var data = [{
+                                    opacity: 0.8,
+                                    color: '#00b0ff', //#00d4ff
+                                    type: 'mesh3d',
+                                    x: xArr,
+                                    y: yArr,
+                                    z: zArr
+                                }];
+
+                                Plotly.newPlot("plot", data, {}, { showSendToCloud: true });
+                                resolve();
+                            }
+                            else {
+                                                               
+                                reject(response.msg);
+                            }
+                          
+                        },
+                        error: _ => reject()
+                    });
+                }).then(_ => {
+
+                    $.ajax({
+                        url: '@Url.Action("GetS", "Home")',
+
+                        data: {
+                            xStart: xStart,
+                            xEnd: xEnd,
+                            yStart: yStart,
+                            yEnd: yEnd,
+                            step: step
+                        },
+                        success: response => {
+
+                            if (response.status) {
+                                s.innerHTML = `S = ${response.result}`;
+                            }
+                            else {
+                                throw Exception(response.msg);
+                            }                           
+                        }
+                    });
+                }).catch(err => console.log(err)); // toast error сюда
+            });
+        }
+        
+           
+
+
+    </script>
+</body>
+</html>

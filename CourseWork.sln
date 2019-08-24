@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseWork", "CourseWork\CourseWork.csproj", "{65224727-FCD1-4764-AD39-ECF7708586E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpsonMethod", "SimpsonMethod\SimpsonMethod.csproj", "{D021C577-D208-41D4-86F9-039F8273440F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surface", "Surface\Surface.csproj", "{51DCCF08-D27B-4B6E-8C2F-F2FF699678BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65224727-FCD1-4764-AD39-ECF7708586E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65224727-FCD1-4764-AD39-ECF7708586E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65224727-FCD1-4764-AD39-ECF7708586E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65224727-FCD1-4764-AD39-ECF7708586E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D021C577-D208-41D4-86F9-039F8273440F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D021C577-D208-41D4-86F9-039F8273440F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D021C577-D208-41D4-86F9-039F8273440F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D021C577-D208-41D4-86F9-039F8273440F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51DCCF08-D27B-4B6E-8C2F-F2FF699678BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51DCCF08-D27B-4B6E-8C2F-F2FF699678BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51DCCF08-D27B-4B6E-8C2F-F2FF699678BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51DCCF08-D27B-4B6E-8C2F-F2FF699678BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37C5C19F-770D-4AE4-916F-D395447229AC}
+	EndGlobalSection
+EndGlobal
